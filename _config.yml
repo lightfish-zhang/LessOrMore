@@ -1,15 +1,15 @@
 # Site settings
-name: Less Or More
-email: luoyan35714@126.com
-author: Freud Kang
-url: http://www.hifreud.com
-resume_site: http://www.hifreud.com/Resume.io/
-github: https://github.com/luoyan35714/
-baseurl: "/LessOrMore"
-description: Actually, less is more!
-meta_description: 康志华;个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
+name: Lightfish Blog
+email: i@lightfish.cn
+author: Lightfish Zhang
+url: http://www.lightfish.cc
+#resume_site: http://www.hifreud.com/Resume.io/
+github: https://github.com/lightfish-zhang/
+baseurl: "/"
+description: As a coder,listen keyborad
+meta_description: lightfish
 motto: It's our wits that make us men.
-banner: 学而不思则罔，思而不学则殆。
+banner: As a coder,listen keyborad
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
@@ -17,7 +17,7 @@ paginate: 10
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
-github_username: luoyan35714
+github_username: lightfish-zhang
 highlighter: rouge
 
 # Build settings
@@ -25,11 +25,11 @@ markdown: kramdown
 
 FB:
   comments :
-    provider : duoshuo
+    provider : disqus
     duoshuo:
-        short_name : luoyan35714
+        short_name : 
     disqus :
-        short_name : freudkang
+        short_name : lightfish
     # facebook :
     #   appid : 123
     #   num_posts: 5
