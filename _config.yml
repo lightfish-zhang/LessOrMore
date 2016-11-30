@@ -6,10 +6,10 @@ url: http://www.lightfish.cc
 #resume_site: 
 github: https://github.com/lightfish-zhang/
 baseurl: ""
-description: As a coder,listen keyboard
+description: As a coder, listen to keyboard
 meta_description: lightfish
-motto: As a coder,listen keyboard
-banner: As a coder,listen keyboard
+motto: As a coder, listen to keyboard
+banner: As a coder, listen to keyboard
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
