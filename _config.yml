@@ -3,12 +3,12 @@ name: Lightfish Blog
 email: i@lightfish.cn
 author: Lightfish Zhang
 url: http://www.lightfish.cc
-#resume_site: http://www.hifreud.com/Resume.io/
+#resume_site: 
 github: https://github.com/lightfish-zhang/
 baseurl: ""
 description: As a coder,listen keyborad
 meta_description: lightfish
-motto: It's our wits that make us men.
+motto: As a coder,listen keyborad
 banner: As a coder,listen keyborad
 
 #permalink: /:categories/:year/:month/:day/:title/
