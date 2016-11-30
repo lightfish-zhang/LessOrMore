@@ -27,7 +27,7 @@ FB:
   comments :
     provider : disqus
     duoshuo:
-        short_name : 
+        short_name : lightfish
     disqus :
         short_name : lightfish
     # facebook :
