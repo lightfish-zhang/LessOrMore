@@ -3,7 +3,7 @@ layout: post
 title: 从最小的c程序复习编译原理
 date:   2016-10-11 10:30:00 +0800
 categories: c/cpp 
-tag: 编译, asm
+tag: [编译, asm]
 ---
 
 * content
