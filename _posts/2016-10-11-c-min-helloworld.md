@@ -53,7 +53,7 @@ void nomain()
 
 
 
-附上makefile
+附上Makefile
 
 ~~~ bash
 minHelloWorld.out:minHelloWorld.o
