@@ -12,10 +12,10 @@ tag: 编译, asm
 ## 前言
 这是一篇读后感，从《程序员的自我修养》一书，复习了c语言的底层原理，下面以一个小例子来理解程序的编译链接
 
-## 最小HelloWorld程序
-不是直接print出HelloWorld哦，不引用任何头文件，直接打印出内容，说是c语言，其实是用了asm汇编指令。
 
-### 程序内容
+## 程序内容
+不是直接print出HelloWorld哦，不引用任何头文件，直接打印出内容，说是c语言，其实是用了asm汇编指令。
+===
 以下代码用64位机器测试，asm指令中的寄存器是'r'开头，如果是32位机器，将寄存器改为'e'开头即可。
 
 ~~~ c
@@ -62,9 +62,9 @@ minHelloWorld.o:
 	gcc -c -fno-builtin minHelloWorld.c
 ~~~
 
-### 原理
+## 原理
 
-#### 编译参数说明
+### 编译参数说明
 
 -  -fno-builtin 关闭GCC内置函数功能，如exit()，避免gcc优化替换
 -  -static 使用静态链接，而不是默认的动态链接
@@ -80,7 +80,7 @@ objdump -d minHelloWorld.out
 0000000000400127 <nomain>:
 ~~~
 
-#### 代码段(Sections)
+### 代码段(Sections)
 
 ~~~ bash
 # 该命令可看详细的代码段、符号表等信息，详情见附录
@@ -100,6 +100,8 @@ strip --remove-section=.comment minHelloWorld.out
 
 
 ## 附录
+
+### elf格式执行文件结构
 
 ~~~ bash
 # objdump -x minHelloWorld.out
