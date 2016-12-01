@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  [备忘录]如何使用LessOrMore这个Jekyll模版
+title:  如何使用LessOrMore这个Jekyll模版
 date:   2016-08-27 01:08:00 +0800
-categories: 备忘录
-tag: Jekyll
+categories: 备忘录 
+tag: Jekyll 
 ---
 
 * content
