@@ -63,9 +63,10 @@ minHelloWorld.o:
 
 ### 原理
 #### 编译参数说明
-- -fno-builtin 关闭GCC内置函数功能，如exit()，避免gcc优化替换
-- -static 使用静态链接，而不是默认的动态链接
-- -e xxx 指定程序的入口函数为xxx，使executable program的ELF文件头的Entry point address赋值为xxx函数的地址，使用readelf和objdump命令可证
+
+-  -fno-builtin 关闭GCC内置函数功能，如exit()，避免gcc优化替换
+-  -static 使用静态链接，而不是默认的动态链接
+-  -e xxx 指定程序的入口函数为xxx，使executable program的ELF文件头的Entry point address赋值为xxx函数的地址，使用readelf和objdump命令可证
 
 ~~~ bash
 readelf -h minHelloWorld.out
