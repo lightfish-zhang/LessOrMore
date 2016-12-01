@@ -21,4 +21,4 @@ permalink: /books/
     - 基本乐理教程-音乐卷
     
 + 电子书
-    - [xv6 一个教学用的完整的类 Unix 操作系统](https://www.gitbook.com/book/th0ar/xv6-chinese/details)
+    - [xv6 一个教学用的完整的类 Unix 操作系统](https://www.gitbook.com/book/th0ar/xv6-chinese)
