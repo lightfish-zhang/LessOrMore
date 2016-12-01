@@ -22,3 +22,4 @@ permalink: /books/
     
 + 电子书
     - [xv6 一个教学用的完整的类 Unix 操作系统](https://www.gitbook.com/book/th0ar/xv6-chinese)
+    - [深入理解PHP内核](http://www.php-internals.com)
