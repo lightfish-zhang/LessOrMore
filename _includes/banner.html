@@ -2,8 +2,11 @@
 <div class="banner">
   <div class="container">
   	{% if page.categories != null %}
-    	<a href="{{ '/categories/' | prepend: site.baseurl }}#{{page.categories}}-ref">{{page.categories}}</a>	/
-    	<a href="{{ '/tag/' | prepend: site.baseurl }}#{{page.tag}}-ref">{{page.tag}}</a>
+    	Category: <a href="{{ '/categories/' | prepend: site.baseurl }}#{{page.categories}}-ref">{{page.categories}}</a>	/ 
+      Tag: 
+      {% for tag in page.tag  %}
+    	  <a href="{{ '/tag/' | prepend: site.baseurl }}#{{page.tag}}-ref">{{tag}}</a>
+      {% endfor %}
     {% else %}
     	{{ site.banner }}
     {% endif %}
