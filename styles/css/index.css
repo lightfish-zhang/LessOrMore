@@ -6096,8 +6096,9 @@ h3 {
   box-sizing: border-box;
 }
 *::selection{
-  background-color:rgba(255,183,77,0.7);
-  color:#414141
+  background-color:#b3d4fc;
+  color:black;
+  text-shadow:none;
 }
 html {
   font-size: 62.5%;
