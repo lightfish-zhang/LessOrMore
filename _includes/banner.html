@@ -6,7 +6,7 @@
       &nbsp;&nbsp;
       Tag : 
       {% for tag in page.tag  %}
-    	  <a href="{{ '/tag/' | prepend: site.baseurl }}#{{page.tag}}-ref">{{tag}}</a>
+    	  <a href="{{ '/tag/' | prepend: site.baseurl }}#{{page.tag}}-ref">{{tag}}</a>&nbsp;
       {% endfor %}
     {% else %}
     	{{ site.banner }}
