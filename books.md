@@ -10,6 +10,7 @@ permalink: /books/
 
 2016书单
 -----------------------------------------------------------------
+
 + 实体书
     - 程序员的自我修养
     - C专家编程
@@ -19,7 +20,7 @@ permalink: /books/
     - 数据结构(c语言版) -> 复习
     - 图解TCP/IP
     - 基本乐理教程-音乐卷
-    
+
 + 电子书
     - [xv6 一个教学用的完整的类 Unix 操作系统](https://www.gitbook.com/book/th0ar/xv6-chinese)
     - [深入理解PHP内核](http://www.php-internals.com)
