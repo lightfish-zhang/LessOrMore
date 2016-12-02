@@ -4,12 +4,15 @@ email: i@lightfish.cn
 author: Lightfish Zhang
 url: http://lightfish.cn
 #resume_site: 
-github: https://github.com/lightfish-zhang/
 baseurl: ""
 description: As a coder, listen to keyboard
 meta_description: lightfish
 motto: Stroms make trees take deeper roots.
 banner: As a coder, listen to keyboard
+
+github_username: lightfish-zhang
+github: https://github.com/lightfish-zhang
+stackoverflow: https://stackoverflow.com/users/7202973/lightfish
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
@@ -17,7 +20,6 @@ paginate: 10
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
-github_username: lightfish-zhang
 highlighter: rouge
 
 # Build settings
