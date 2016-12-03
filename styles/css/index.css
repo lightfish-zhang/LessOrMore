@@ -6564,7 +6564,7 @@ hr {
   overflow: hidden;
   background: #fff;
   background-color: #fff;
-  padding: 1px 60px 80px 60px;
+  padding: 1px 20px 80px 20px;
   margin: 0 -15px;
   border: none;
   border-radius: 0 0 4px 4px;
@@ -6585,7 +6585,7 @@ hr {
 
 @media (min-width: 480px) {
   .docs-content {
-    padding: 1px 20px 80px 20px;
+    padding: 1px 60px 80px 60px;
   }
 }
 
