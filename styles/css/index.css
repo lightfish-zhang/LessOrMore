@@ -6576,6 +6576,25 @@ hr {
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+@media (min-width: 700px) {
+  .docs-content {
+    padding: 1px 40px 80px 40px;
+  }
+}
+
+@media (min-width: 480px) {
+  .docs-content {
+    padding: 1px 20px 80px 20px;
+  }
+}
+
+@media (min-width: 484px) {
+  .docs-content {
+    padding: 1px 20px 80px 20px;
+  }
+}
+
 .docs-section + .docs-section {
   padding-top: 40px;
 }
