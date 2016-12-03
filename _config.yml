@@ -27,7 +27,7 @@ markdown: kramdown
 
 FB:
   comments :
-    provider : disqus
+    provider : duoshuo
     duoshuo:
         short_name : lightfish
     disqus :
