@@ -6589,12 +6589,6 @@ hr {
   }
 }
 
-@media (min-width: 484px) {
-  .docs-content {
-    padding: 1px 20px 80px 20px;
-  }
-}
-
 .docs-section + .docs-section {
   padding-top: 40px;
 }
