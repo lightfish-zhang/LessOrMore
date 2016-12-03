@@ -6495,12 +6495,14 @@ hr {
     line-height: 1;
   }
 }
+/*
 @media (min-width: 992px) {
   .docs-header h1,
   .docs-header p {
     margin-right: 380px;
   }
 }
+*/
 .footer {
   padding-top: 40px;
   padding-bottom: 30px;
