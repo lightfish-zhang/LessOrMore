@@ -32,13 +32,14 @@ header: Posts By Category
       <div class="panel docs-content">
         <div class="wrapper">
           <div class="home">
-			{% for category in site.categories %} 
-			  <h2 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h2>
-			  <ul>
-			    {% assign pages_list = category[1] %}  
-			    {% include LessOrMore/pages_list %}
-			  </ul>
-			{% endfor %}
+		<h2>Tags</h2>
+		{% for category in site.categories %} 
+		  <h3 id="{{ category[0] }}-ref">{{ category[0] | join: "/" }}</h3>
+		  <ul>
+		    {% assign pages_list = category[1] %}  
+		    {% include LessOrMore/pages_list %}
+		  </ul>
+		{% endfor %}
           </div>
         </div>
       </div>
