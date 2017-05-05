@@ -127,7 +127,7 @@ Portable Operating System Interface (POSIX)
 POSIX.1中列出的信号：
 
 信号 值 处理动作 发出信号的原因
----------------------------------------------------------------------
+
 SIGHUP 1 A 终端挂起或者控制进程终止
 SIGINT 2 A 键盘中断（如break键被按下）
 SIGQUIT 3 C 键盘的退出键被按下
