@@ -6240,9 +6240,8 @@ h3 {
   box-sizing: border-box;
 }
 *::selection{
-  background-color:#b3d4fc;
-  background-color:rgba(255, 219, 43, 0.75);
-  color:black;
+  background-color:#f70b0b;
+  color:#ffffff;
   text-shadow:none;
 }
 html {
