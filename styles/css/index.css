@@ -6479,7 +6479,7 @@ hr {
   color: #fff;
 }
 .docs-header p {
-  font-weight: 300;
+  /*font-weight: 300;*/
   line-height: 1.5;
 }
 .docs-header .container {
