@@ -3,7 +3,7 @@ layout: post
 title: 关于Linux的进程的常识
 date:   2016-11-02 14:30:00 +0800
 categories: Linux 
-tag: [Linux, process]
+tag: [linux, process]
 ---
 
 * content
