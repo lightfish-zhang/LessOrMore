@@ -7280,3 +7280,7 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.post-content ul li{
+  margin-bottom: 12px;
+}
