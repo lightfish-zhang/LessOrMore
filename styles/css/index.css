@@ -492,7 +492,7 @@ blockquote {
 }
 blockquote p {
   color: #7a7a7a;
-  font-weight: 300;
+/*  font-weight: 300;*/
   line-height: 1.25;
 }
 blockquote p:last-child {
@@ -6241,6 +6241,7 @@ h3 {
 }
 *::selection{
   background-color:#b3d4fc;
+  background-color:rgba(255, 219, 43, 0.75);
   color:black;
   text-shadow:none;
 }
@@ -7282,5 +7283,9 @@ td.visible-print {
 }
 
 .post-content ul li{
-  margin-bottom: 12px;
+  line-height: 2.2;
+}
+
+.post-content p{
+  line-height: 1.8;
 }
