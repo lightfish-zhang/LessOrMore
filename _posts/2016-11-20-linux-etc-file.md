@@ -55,6 +55,7 @@ lightfish:x:1000:1000:lightfish,,,:/home/lightfish:/usr/bin/zsh
 - “组内用户列表”是属于这个组的所有用户的列表/b]，不同用户之间用逗号(,)分隔。这个用户组可能是用户的主组，也可能是附加组。
 
 ````
+$ cat /etc/group
 root:x:0:
 daemon:x:1:
 bin:x:2:
@@ -86,6 +87,7 @@ cdrom:x:24:lightfish
 - 最后一个字段是保留字段。
 
 ````
+$ sudo cat /etc/shadow
 root:!:17190:0:99999:7:::
 daemon:*:17065:0:99999:7:::
 bin:*:17065:0:99999:7:::
