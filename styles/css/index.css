@@ -6766,6 +6766,7 @@ h3 {
   position: relative;
   padding-left: 60px;
   margin-left: -60px;
+  font-weight: 600;
 }
 h1 .anchor:hover,
 h2 .anchor:hover,
