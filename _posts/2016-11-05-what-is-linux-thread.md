@@ -3,7 +3,7 @@ layout: post
 title: 关于Linux的线程的常识
 date:   2016-11-05 15:20:00 +0800
 categories: Linux 
-tag: [Linux, thread]
+tag: [linux, thread]
 ---
 
 * content
