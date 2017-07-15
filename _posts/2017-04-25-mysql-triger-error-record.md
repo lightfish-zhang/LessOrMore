@@ -93,6 +93,6 @@ update `card` set `code`=concat(left(concat(FROM_UNIXTIME(UNIX_TIMESTAMP(),'%Y%m
 ```
 
 
-参考文献
+## 参考文献
 
 [触发器的语法说明](https://dev.mysql.com/doc/refman/5.7/en/trigger-syntax.html)

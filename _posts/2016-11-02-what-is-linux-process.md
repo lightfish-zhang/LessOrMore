@@ -104,7 +104,7 @@ signal(SIGSTOP, SIG_IGN );
 - 虽然僵尸进程的父进程没有wait它，如果父进程结束，僵尸进程就不再是僵尸进程了，它会被init收养。
 - init进程周期执行wait系统调用收割其收养的所有僵尸进程。
 
-# shell 操作历史
+### shell 操作历史
 - 指令`history`可以查看当前用户在shell输入指令的历史记录
 - `ctrl-r` 可以快捷搜索历史记录
 - 文件保存再用户目录下的`.bash_history`文件
@@ -116,6 +116,63 @@ export HISTCONTROL=ignorespace
 
 ```
 - 永久设置，将以上命令加入文件`/etc/profile`
+
+### 进程的状态
+
+- 通过`ps -eo pid,stat,command`查看各种状态的进程
+
+example:
+```
+    1 Ss   /sbin/init
+    2 S    [kthreadd]
+    3 S    [ksoftirqd/0]
+    5 S<   [kworker/0:0H]
+    7 S    [rcu_preempt]
+ 1530 SN   /usr/bin/fcitx-dbus-watcher unix:abstract=/tmp/dbus-DygTVJTBrR,guid=d6d201763594c0bab8010cc759699396 1520
+ 1583 S    /usr/lib/GConf/gconfd-2
+ 1588 Sl   sogou-qimpanel
+ 1635 Ssl  /usr/lib/upower/upowerd
+```
+
+- < (高优先级进程）
+- N（低优先级进程）
+- L（内存锁页，即页不可以被换出内存）
+- s(该进程为会话首进程）
+- l(多线程进程）
+- +（进程位于前台进程组）。
+- D  不可中断     Uninterruptible sleep (usually IO)
+- R    正在运行，或在队列中的进程
+- S    处于休眠状态
+- T    停止或被追踪
+- Z    僵尸进程
+- W    进入内存交换（从内核2.6开始无效）
+- X    死掉的进程
+- 例如：Ssl说明该进程处于可中断等待状态，且该进程为会话首进程，而且是一个多线程的进程。
+
+见 `man ps`
+
+```
+PROCESS STATE CODES
+       Here are the different values that the s, stat and state output specifiers (header "STAT" or "S") will display to describe the state of a process:
+
+               D    uninterruptible sleep (usually IO)
+               R    running or runnable (on run queue)
+               S    interruptible sleep (waiting for an event to complete)
+               T    stopped by job control signal
+               t    stopped by debugger during the tracing
+               W    paging (not valid since the 2.6.xx kernel)
+               X    dead (should never be seen)
+               Z    defunct ("zombie") process, terminated but not reaped by its parent
+
+       For BSD formats and when the stat keyword is used, additional characters may be displayed:
+
+               <    high-priority (not nice to other users)
+               N    low-priority (nice to other users)
+               L    has pages locked into memory (for real-time and custom IO)
+               s    is a session leader
+               l    is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
+               +    is in the foreground process group
+```
 
 
 # 附录
