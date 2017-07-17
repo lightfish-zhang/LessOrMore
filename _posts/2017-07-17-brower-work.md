@@ -11,4 +11,4 @@ tag: [brower]
  
 ## 前言
 
-简单来讲，有几步，Render-Layout-Composite(重绘－重排－合成)
+简单来讲，有几步，Render-Layout-Composite(重绘－重排－合成)－光栅系统
