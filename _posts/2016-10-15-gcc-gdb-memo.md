@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [备忘录] gcc与gdb的使用方法与技巧
+title: 备忘录-gcc与gdb的使用方法与技巧
 date:   2016-10-15 11:30:00 +0800
 categories: c/cpp 
 tag: [编译]
