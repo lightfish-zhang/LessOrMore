@@ -12,7 +12,8 @@ tag: [brower]
 ## 前言
 
 - 在`youtude`上学习了[Browser Rendering Optimization][1]的课程，做学习笔记整理
-- 本篇讲述, 单个请求一直到将像素填充到屏幕上的简单流程
+- 本篇讲述的是, 单个请求一直到将像素填充到屏幕上的简单流程
+- 本文的图片和内容均来自课程内容——[Browser Rendering Optimization][1]
 
 
 ## 渲染的流程概括
@@ -68,6 +69,7 @@ tag: [brower]
 - 这一步在chrome的devTool中显示为`Layout`, 也有称为`reflow`
 - 布局，简单来说就是排版成一个个嵌套的方框 —— `网络布局模型`
 - 这意味着某个元素可以影响到其他元素, 例如`body`的宽度通常会影响到子项的宽度等，一直往树的下方蔓延
+- 值得注意的是，如果网页中执行`javascript`脚本修改了页面中`任意可显示元素`的`宽高`,不管这个元素是`body`还是某个毫不起眼的`div`，`scope`作用域都是`document`，都会导致整个`document`重新`layout` 
 
 ### raster 光栅化
 
