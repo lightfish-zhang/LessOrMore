@@ -9,23 +9,23 @@ tag: [brower]
 * content
 {:toc}
  
-## 前言
+# 前言
 
 - 在`youtude`上学习了[Browser Rendering Optimization][1]的课程，做学习笔记整理
 - 本篇讲述的是, 单个请求一直到将像素填充到屏幕上的简单流程
 - 本文的图片和内容均来自课程内容——[Browser Rendering Optimization][1]
 
 
-## 渲染的流程概括
+# 概括渲染的流程
 
 - prase HTML 解析富文本
 - recalculate style (DOM + CSS = render tree) 将DOM和CSS合成实际显示的树状节点
 - multi surfaces, layouts and composite 合成图层
 - raster, draw bitmap 矢量转位图，光栅器生成像素点
 
-## 详细流程
+# 详细流程
 
-### prase HTML
+## prase HTML
 
 请求页面
 
@@ -35,7 +35,7 @@ tag: [brower]
 - 服务端返回HTML，浏览器会采取非常机智的措施并提前解析，生成DOM(document object model)
 - 下一步就是将HTML与CSS结合起来
 
-### recalculate style, 
+## recalculate style, 
 
 ![brower-render-dom-css-recalculate-style](https://raw.githubusercontent.com/lightfish-zhang/media-library/master/image/201707/brower-render-dom-css-recalculate-style.png)
 
@@ -60,7 +60,7 @@ tag: [brower]
 > so this is essentially a simplified view of where the critical rendering path
 > 所以这本质上是关键渲染路径的简化视图
 
-### layout
+## layout
 
 布局
 
@@ -71,12 +71,12 @@ tag: [brower]
 - 这意味着某个元素可以影响到其他元素, 例如`body`的宽度通常会影响到子项的宽度等，一直往树的下方蔓延
 - 值得注意的是，如果网页中执行`javascript`脚本修改了页面中`任意可显示元素`的`宽高`,不管这个元素是`body`还是某个毫不起眼的`div`，`scope`作用域都是`document`，都会导致整个`document`重新`layout` 
 
-### raster 光栅化
+## raster 光栅化
 
 ![brower-render-raster](https://raw.githubusercontent.com/lightfish-zhang/media-library/master/image/201707/brower-render-raster.png)
 
 - 这一步是光栅，可以理解为将`矢量图`转化为`位图`
-#### raster for page 页面
+### raster for page 页面
 
 ![brower-render-raster-paint](https://raw.githubusercontent.com/lightfish-zhang/media-library/master/image/201707/brower-render-raster-paint.png)
 
@@ -92,7 +92,7 @@ tag: [brower]
     + 等等。。
 - 这些步骤在`devTool`中显示为`Paint`
 
-#### raster for image 图片
+### raster for image 图片
 
 ![brower-render-raster-image-draw-bitmap](https://raw.githubusercontent.com/lightfish-zhang/media-library/master/image/201707/brower-render-raster-image-draw-bitmap.png)
 
@@ -103,7 +103,7 @@ tag: [brower]
 
 - 解码后，可能还需要调整尺寸
 
-### layouts and composite
+## layouts and composite
 
 - 之前的`layout`布局与`raster`光栅步骤是处理单个`layer`图层，接下来是合成多个图层
 - 在`devTool`中称作`composite layers`
@@ -112,7 +112,7 @@ tag: [brower]
 
 - 合成图层，影响的因素有：透明度，动画
 
-### GPU put the pictures up on screen
+## GPU put the pictures up on screen
 
 ![brower-render-layout-upload-gpu](https://raw.githubusercontent.com/lightfish-zhang/media-library/master/image/201707/brower-render-layout-upload-gpu.png)
 
@@ -121,6 +121,6 @@ tag: [brower]
 > In brief, it is how we get from a single request all the way through to pixels on screen
 > 最后，这就是从单个请求一直到将像素填充到屏幕上的简单流程
 
-## 附录
+# 附录
 
 [1]:https://www.youtube.com/watch?v=hHvPD9m6ovM&index=2&list=PLAwxTw4SYaPl09X4Rljhy7dZinRCzbHz6
