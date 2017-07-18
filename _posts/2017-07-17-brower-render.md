@@ -124,3 +124,5 @@ tag: [brower]
 # 附录
 
 [1]:https://www.youtube.com/watch?v=hHvPD9m6ovM&index=2&list=PLAwxTw4SYaPl09X4Rljhy7dZinRCzbHz6
+
+[Browser Rendering Optimization 课程][1]
