@@ -121,8 +121,30 @@ tag: [brower]
 > In brief, it is how we get from a single request all the way through to pixels on screen
 > 最后，这就是从单个请求一直到将像素填充到屏幕上的简单流程
 
+# render pipline
+
+渲染的管道, 这是渲染性能优化的重要知识点
+
+- 当网页执行`javascript`脚本使页面发生变化时，可能执行以下步骤
+
+    + `javascript` 通常，我们会使用javascript来处理内容并导致外观变化
+    + `style` 如果通过CSS或js做出外观更改，浏览器必须重新计算受到影响的元素的样式
+    + `layout` 如果改变了布局属性，即更改元素的几何结构，例如宽度高度，相对位置或者间距，那么浏览器需要检查所有其他元素并`re-flow the page`回流网页
+    + `paint` 受到影响的区域需要重新绘制
+    + `composite` 最后绘制的元素将需要合成在一起
+
+- 不同的变化可能会执行不同的步骤，推荐网站[csstriggers.com][2]，它罗列出了不同的css样式修改影响到的不同的`渲染步骤`
+
+## 如果
+
+## 
+
 # 附录
 
 [1]:https://www.youtube.com/watch?v=hHvPD9m6ovM&index=2&list=PLAwxTw4SYaPl09X4Rljhy7dZinRCzbHz6
 
+[2]:https://csstriggers.com/
+
 [Browser Rendering Optimization 课程][1]
+
+[csstriggers.com][2]
