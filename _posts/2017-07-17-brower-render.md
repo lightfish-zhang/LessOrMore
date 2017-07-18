@@ -135,10 +135,6 @@ tag: [brower]
 
 - 不同的变化可能会执行不同的步骤，推荐网站[csstriggers.com][2]，它罗列出了不同的css样式修改影响到的不同的`渲染步骤`
 
-## 如果
-
-## 
-
 # 附录
 
 [1]:https://www.youtube.com/watch?v=hHvPD9m6ovM&index=2&list=PLAwxTw4SYaPl09X4Rljhy7dZinRCzbHz6
