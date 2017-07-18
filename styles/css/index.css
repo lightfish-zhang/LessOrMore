@@ -6581,23 +6581,17 @@ hr {
 }
 
 .docs-content img{
-  max-width: 700px;
+  max-width: 80%;
 }
 
 @media (max-width: 700px) {
   .docs-content {
     padding: 1px 40px 80px 40px;
   }
-  .docs-content img{
-    max-width: 600px;
-  }
 }
 @media (max-width: 480px) {
   .docs-content {
     padding: 1px 20px 80px 20px;
-  }
-  .docs-content img{
-    max-width: 400px;
   }
 }
 
