@@ -53,7 +53,7 @@ int channel[2];
 if (socketpair(AF_UNIX, SOCK_STREAM, 0, ngx_processes[s].channel) == -1){
     //error
 }else{
-    //channel[0] and channel[1] like file，you can open or close
+    //channel[0] and channel[1] like fd，you can read, write or close
 }
 ```
 
