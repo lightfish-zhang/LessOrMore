@@ -178,7 +178,7 @@ PROCESS STATE CODES
 # 附录
 
 ## 信号
-Linux系统中，安装`manpage-dev`，用`man 7 sign`查看
+Linux系统中，安装`manpage-dev`，用`man 7 signal`查看
 
 ```
 Portable Operating System Interface (POSIX)
