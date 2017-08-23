@@ -192,6 +192,12 @@ class VariableScope : private core::Noncopyable<VariableScope> {
 ### 垃圾回收
 
 
+// 未写完，待续...
 
 ## 参考资料
 
+[javaScript引擎资料收集帖][1]
+[lv5源码][2]
+
+[1]:http://hllvm.group.iteye.com/group/topic/37596
+[2]:https://github.com/Constellation/iv
