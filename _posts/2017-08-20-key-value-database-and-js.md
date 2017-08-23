@@ -2,8 +2,8 @@
 layout: post
 title: 脑洞，从键值对数据库联想到javascirpt的作用域
 date:   2017-08-20 20:30:00 +0800
-categories: javascirpt
-tag: [c]
+categories: javascript
+tag: [javascript]
 ---
 
 ## 前言
