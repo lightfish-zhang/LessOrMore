@@ -8,6 +8,12 @@ permalink: /books/
 {:toc}
 
 
+2017书单
+----------------------------------------------------------------
+
+![booklist](https://raw.githubusercontent.com/lightfish-zhang/media-library/master/image/201708/booklist.jpg)
+
+
 2016书单
 -----------------------------------------------------------------
 
