@@ -2,8 +2,8 @@
 layout: post
 title: 脑洞，从键值对数据库联想到javascirpt的作用域
 date:   2017-08-20 20:30:00 +0800
-categories: javascirpt
-tag: [c]
+categories: javascript
+tag: [javascript]
 ---
 
 
@@ -35,8 +35,6 @@ string str1 = "abc";
 // 这里的等于号可不是C语言那样把"abc"的首地址赋值给`str1`，而是赋值给str1对象的一个代表值的成员，`st1`是一个对象，
 // 在编译器的认知中，先给str1对象分配空间，类似结构体的内存布局，然后执行构建函数，`string str("abc")`....
 ```
-
-- 按照javascript的语言特性，它的变量名也应该是一个对象，成员至少有字符串的变量名，指向值的地址
 
 
 ----
