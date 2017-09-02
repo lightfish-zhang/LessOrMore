@@ -11,6 +11,8 @@ permalink: /books/
 2017书单
 ----------------------------------------------------------------
 
+买那么多，不可能看完的。。。
+
 ![booklist](https://raw.githubusercontent.com/lightfish-zhang/media-library/master/image/201708/booklist.jpg)
 
 
