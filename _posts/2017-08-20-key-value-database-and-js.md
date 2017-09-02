@@ -6,6 +6,11 @@ categories: javascirpt
 tag: [c]
 ---
 
+
+* content
+{:toc}
+
+
 ## 前言
 
 - 这篇东西只是我对`对象模型`的不上的台面的猜想和思考

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Nginx的多进程通信模型
-date:   2017-08-06 20:30:00 +0800
+title: nginx源码学习笔记-多进程通信模型
+date:   2017-06-14 20:30:00 +0800
 categories: nginx
-tag: [c]
+tag: [ipc]
 ---
 
 * content
@@ -11,7 +11,8 @@ tag: [c]
 
 ## 前言
 
-学习多进程通信，Nginx是一个很好的学习例子
+- 学习多进程通信，Nginx是一个很好的学习例子
+- 本篇学习笔记，实质是笔者对[深入剖析Nginx][1]的读后感与调试源码的实践记录
 
 ## 父子进程通信
 
@@ -102,3 +103,10 @@ Nginx的代码实现可见源码`ngx_channel.c`文件，本文不贴代码占篇
 - `recvmsg`部分，在`ngx_read_channel()`中
     + 错误处理，例如是传送文件描述符的事件，判断`cmsg.cm.cmsg_len`长度是否是想要的`fd`的`int`长度
     + `ngx_memcpy(&ch->fd, CMSG_DATA(&cmsg.cm), sizeof(int));`复制消息数据(文件描述符)
+
+
+## 参考文献
+
+- [深入剖析Nginx][1]
+
+[1]:https://book.douban.com/subject/23759678/
