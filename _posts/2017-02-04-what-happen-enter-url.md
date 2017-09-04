@@ -19,10 +19,15 @@ tag: [font-end, net]
 - 前者没找到，从dns服务器获取ip地址，如果Linux配置dns服务器地址，在`/etc/resolv.conf`文件.
 
 ### dns的一些事儿
+
 - dns劫持,等有趣的事 [dns的一些事儿](http://)
 
 ## tcp三次握手与四次挥手
-- sny 
+
+### 参考资料
+
+- [TCP 的那些事儿（上）](https://coolshell.cn/articles/11564.html)
+- [网络](https://github.com/ElemeFE/node-interview/blob/master/sections/zh-cn/network.md#q-tcp-udp)
 
 ### 传输数据，
 
