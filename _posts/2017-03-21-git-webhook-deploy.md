@@ -10,10 +10,15 @@ tag: [git]
 {:toc}
  
 
+## 例子参考
+
+- 本文的git webhook的server项目，开源了一个例子在github上，[git-webhook-deploy](https://github.com/lightfish-zhang/git-webhook-deploy)
+
 ## 前言
 
 web开发者，开发到测试部署，在代码更新这一块如何做的呢。不要说原始的`compare + sftp`，大家常用的应该是使用版本控制工具，设置自动部署。    
-本文讲述`svn`或`Git`版本控制 + `node.js`或`php`项目 + `rsync`从源码机同步代码到多台服务器，简单部署脚本的做法。以后或许会讲述`jenkins + docker + github(issue)`的全自动部署测试反馈的方案。　　　　　
+本文讲述`svn`或`Git`版本控制 + `node.js`或`php`项目 + `rsync`从源码机同步代码到多台服务器，简单部署脚本的做法。以后或许会讲述`jenkins + docker + github(issue)`的全自动部署测试反馈的方案。    
+　　
 本文的目标，总结一句话，```提交代码到版本控制工具后自动执行工程构建\测试\部署```
 
 ## svn的简单做法
@@ -233,7 +238,3 @@ rsync -vzau /www/* user@47.91.165.168:/www -e 'ssh -p 22' --exclude '.git'
 ## 环境变量修改参数
 
 通过环境变量配置一些服务需要的参数，如数据库地址账号，其他服务的访问地址等，这个不详细说了
-
-## 例子参考
-
-- 本文的git webhook的server项目，开源了一个例子在github上，[git-webhook-deploy](https://github.com/lightfish-zhang/git-webhook-deploy)
