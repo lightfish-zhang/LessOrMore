@@ -5822,6 +5822,7 @@ body {
   background-color: transparent;
   border: 0;
   white-space: nowrap;
+  overflow-x: scroll;
 }
 .highlight pre code {
   font-size: inherit;
@@ -5850,7 +5851,6 @@ body {
  */
 .highlight {
   background: #fff; 
-  overflow-x: scroll;
 }
 .highlight .c {
   color: #998;
