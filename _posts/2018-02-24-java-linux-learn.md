@@ -211,7 +211,7 @@ src/test/java/cn/lightfish/design_patterns/creational/simple_factory
 mvn -Dtest=SimpleFactoryTest test
 ```
 
-- 上例使用`junit 4.8.1`，`junit`的3.*与4.*的用法有些区别
+- 上例使用`junit 4.8.1`，`junit`的`3.*`与`4.*`的用法有些区别
 
 
 ### 关于注解 Annotation
