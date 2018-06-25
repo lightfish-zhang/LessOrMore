@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 对mongodb的入门认识——分布式的思想
+title: 对mongodb的认识——设计思想
 date:   2017-12-12 20:30:00 +0800
 categories: mongodb
 tag: [database]
@@ -16,6 +16,8 @@ mongodb是近年越来越受欢迎的数据库，相比mysql, oracle数据库，
 
 ## 把更多的工作分担到客户端执行
 
+
+
 ### objectId 是在客户端生成的
 
 ### 离弦之箭，不重要的数据无需确认返回状态码
@@ -30,4 +32,4 @@ mongodb是近年越来越受欢迎的数据库，相比mysql, oracle数据库，
 
 ### 有哪些数据类型，有怎样的内存布局
 
-### 序列与反序列的性能考虑
+### 序列与反序列的性能考虑——BSON
