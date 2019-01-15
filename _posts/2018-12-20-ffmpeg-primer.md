@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ffmpeg音视频C语言编程
+title: 【音视频编程】ffmpeg的C语言编程
 date:   2018-12-20 20:30:00 +0800
 categories: ffmpeg
 tag: [codec]

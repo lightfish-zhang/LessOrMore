@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 将ffmpeg封装出golang/cgo库
+title: 【音视频编程】将ffmpeg封装golang/cgo库
 date:   2018-12-24 20:30:00 +0800
 categories: ffmpeg
 tag: [codec]
