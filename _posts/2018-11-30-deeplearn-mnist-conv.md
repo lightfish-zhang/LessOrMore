@@ -14,4 +14,4 @@ tag: [deeplearn]
 ## jupyter 笔记
 
 
-<iframe src="https://nbviewer.jupyter.org/github/lightfish-zhang/deeplearn-expirence/blob/master/01-first/mnist_conv.ipynb" width="1024" height="1024"></iframe>
+<iframe src="https://nbviewer.jupyter.org/github/lightfish-zhang/deeplearn-expirence/blob/master/01-first/mnist_conv.ipynb" width="100%" height="1024"></iframe>
