@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ffmpeg音视频编程入门
+title: ffmpeg音视频C编程入门
 date:   2018-12-20 20:30:00 +0800
 categories: ffmpeg
 tag: [codec]
