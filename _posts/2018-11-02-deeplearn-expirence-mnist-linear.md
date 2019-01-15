@@ -7,4 +7,4 @@ tag: [deeplearn]
 ---
 
 
-<iframe src="https://nbviewer.jupyter.org/github/lightfish-zhang/deeplearn-expirence/blob/master/01-first/mnist_linear.ipynb" width="850" height="1000"></iframe>
+<iframe src="https://nbviewer.jupyter.org/github/lightfish-zhang/deeplearn-expirence/blob/master/01-first/mnist_linear.ipynb" width="1024" height="1024"></iframe>
