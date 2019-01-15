@@ -31,7 +31,7 @@ PCM（Puls Code Modulation）全称脉码调制录音，PCM录音就是将声音
 
 ### javascript 如何处理文件流
 
-js 在处理文件流、网络数据，常用到 ArrayBuffer 类型，关于这个类型的API调用方法，需要事先多了解。
+js 在处理文件流、网络数据，常用到 ArrayBuffer 类型，关于 ArrayBuffer 类型的API调用方法，需要事先多了解。
 
 
 - 第一步，ajax异步获取网络 pcm 文件的 ArrayBuffer
