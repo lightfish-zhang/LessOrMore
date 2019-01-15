@@ -26,7 +26,7 @@ tag: [codec]
 
 本文是音视频编程入门篇，先略过传输协议层，主要讲格式层与编解码层的编程例子。
 
-### 第一步，查看视频文件信息
+### 第一步，查看音视频格式信息
 
 料理食材的第一步，得先懂得食材的来源和特性。
 
@@ -126,11 +126,11 @@ find audio stream index=0, type=video, codec id=27
 find audio stream index=1, type=audio, codec id=86018
 ```
 
-- 看到没，上面代码只获得解码器的id值(枚举类型)，那么解码器的信息呢，加上下面代码
+- 看到没，上面代码只获得解码器的id值(枚举类型)，那么解码器的信息呢，加上下面代码，可以看到音视频流的格式，以及获得解码器句柄以便于解码步骤使用。
 
 ```c
   AVCodec *decodec = NULL;
-  decodec = avcodec_find_decoder(codec_par->codec_id);
+  decodec = avcodec_find_decoder(codec_par->codec_id); // 获得解码器
   av_log(NULL, AV_LOG_INFO, "find codec name=%s\t%s", decodec->name, decodec->long_name);
 ```
 
@@ -146,6 +146,7 @@ find codec name=aac     AAC (Advanced Audio Coding)
 - 关于视频，可以查看帧率(一秒有多少帧画面)
 
 ```c
+  // 获得一个分数
   AVRational framerate = av_guess_frame_rate(fmt_ctx, stream, NULL);
   av_log(NULL, AV_LOG_INFO, "video framerate=%d/%d", framerate.num, framerate.den);
 ```
@@ -158,16 +159,219 @@ video framerate=24/1
 
 至此，我们掌握了如何利用 ffmpeg 的 C 语言 API 来读取音视频文件流的信息
 
-### 解码
+### 第二步，解码
+
+简单说一下音视频文件的解码过程，对大部分音视频格式来说，在原始流的数据中，不同类型的流会按时序先后交错在一起，这是多路复用，这样的数据分布，即有利于播放器打开本地文件，读取某一时段的音视频时，方便进行fseek操作（移动文件描述符的读写指针）；也有利于网络在线观看视频，“空投”从某一刻开始播放视频，从文件某一段下载数据。
+
+直观的看下面的循环读取文件流的代码
+
+```c
+    /* begin 解码过程 */
+    AVPacket *pkt;
+    AVFrame *frame;
+
+    // 分配原始文件流packet的缓存
+    pkt = av_packet_alloc();
+    // 分配 AV 帧 的内存
+    frame = av_frame_alloc();
+
+    // 在循环中不断读取下一个文件流的 packet 包
+    while (av_read_frame(fmt_ctx, pkt) >= 0) {
+      if(pkt->size){
+            /*
+            demux 解复用
+            原始流的数据中，不同格式的流会交错在一起（多路复用）
+            从原始流中读取的每一个 packet 的流可能是不一样的，需要判断 packet 的流索引，按类型处理
+            */
+            if(pkt->stream_index == video_stream_idx){
+              //　此处省略处理视频的逻辑
+            }else if(pkt->stream_index == audio_stream_idx){
+              //　此处省略处理音频的逻辑
+            }
+        }
+        av_packet_unref(pkt);
+        av_frame_unref(frame);
+    }
+    /* end 解码过程 */
+
+    // flush data
+    avcodec_send_packet(video_decodec_ctx, NULL);
+    avcodec_send_packet(audio_decodec_ctx, NULL);
+
+```
+
+上面代码是对音视频流进行解复用的主要过程，在循环中分别处理不同类型的流数据，到了这一步，就是使用解码器对循环中获取的 packet 包进行解码。
 
 
+#### 解码前的准备
 
-#### 转成 GIF 图片
+ffmepg 中，解码工具需要初始化好两个指针，一个是解码器，一个是解码器上下文，上下文是用来存储此次操作的变量集合，比如 io 的句柄、解码的帧数累加值，视频的帧率等等。让我们重新编写上面读取音视频流的循环，给音视频流分别分配好这两个指针，并且处理好错误返回值。（下面代码的 goto 语句暂且略过，后面再提）
 
-为了让人有更直观的认识，转出个 gif 图片
+```c
+   // find codec
+    int video_stream_idx = -1, audio_stream_idx = -1;
+    AVStream *video_stream = NULL, *audio_stream = NULL;
+    AVCodecContext *video_decodec_ctx=NULL, *audio_decodec_ctx=NULL;
+
+    // AVFormatContext.nb_stream 记录了该 URL 中包含有几路流
+    for(int i=0; i<fmt_ctx->nb_streams; i++){
+        AVStream *stream = fmt_ctx->streams[i];
+        AVCodecParameters *codec_par = stream->codecpar;
+        AVCodec *decodec = NULL;
+        AVCodecContext *decodec_ctx = NULL;
+
+        av_log(NULL, AV_LOG_INFO, "find audio stream index=%d, type=%s, codec id=%d", 
+                i, av_get_media_type_string(codec_par->codec_type), codec_par->codec_id);
+
+        // 获得解码器
+        decodec = avcodec_find_decoder(codec_par->codec_id);
+        if(!decodec){
+            av_log(NULL, AV_LOG_ERROR, "fail to find decodec\n");
+            goto clean2;
+        }
+
+        av_log(NULL, AV_LOG_INFO, "find codec name=%s\t%s", decodec->name, decodec->long_name);
+
+        // 分配解码器上下文句柄
+        decodec_ctx = avcodec_alloc_context3(decodec);
+        if(!decodec_ctx){
+            av_log(NULL, AV_LOG_ERROR, "fail to allocate codec context\n");
+            goto clean2;
+        }
+
+        // 复制流信息到解码器上下文
+        if(avcodec_parameters_to_context(decodec_ctx, codec_par) < 0){
+            av_log(NULL, AV_LOG_ERROR, "fail to copy codec parameters to decoder context\n");
+            avcodec_free_context(&decodec_ctx);
+            goto clean2;
+        }
+
+        // 初始化解码器
+        if ((ret = avcodec_open2(decodec_ctx, decodec, NULL)) < 0) {
+            av_log(NULL, AV_LOG_ERROR, "Failed to open %s codec\n", decodec->name);
+            return ret;
+        }
+
+        if( stream->codecpar->codec_type == AVMEDIA_TYPE_VIDEO){
+            // 视频的属性，帧率，这里 av_guess_frame_rate() 非必须，看业务是否需要使用帧率参数
+            decodec_ctx->framerate = av_guess_frame_rate(fmt_ctx, stream, NULL);
+            av_log(NULL, AV_LOG_INFO, "video framerate=%d/%d", decodec_ctx->framerate.num, decodec_ctx->framerate.den);
+            video_stream_idx = i;
+            video_stream = stream;
+            video_decodec_ctx = decodec_ctx;
+        } else if( stream->codecpar->codec_type == AVMEDIA_TYPE_AUDIO){
+            audio_stream_idx = i;
+            audio_stream = stream;
+            audio_decodec_ctx = decodec_ctx;
+        } 
+    }
+
+```
+
+以上方式是循环读取文件的所有流，这样写有助于新手理解音视频文件包含各种流的知识点，若是业务需求，只要对单独一个流（比如视频流处理），可以用以下方式获取特定的流，在根据流的解码器id，分配解码工具。
+
+```c
+    if (avformat_find_stream_info(fmt_ctx, NULL) < 0) {
+        av_log(NULL, AV_LOG_ERROR, "Could not find stream information\n");
+        goto clean1;
+    }
+    ret = av_find_best_stream(fmt_ctx, AVMEDIA_TYPE_VIDEO, -1, -1, NULL, 0);
+    if (ret < 0) {
+        av_log(NULL, AV_LOG_ERROR, "Could not find %s stream\n",
+                av_get_media_type_string(type));
+        return ret;
+    }
+    int stream_index = ret;
+    AVStream *st = fmt_ctx->streams[stream_index];
+```
+
+
+#### 解码的循环
+
+修改上面解码的循环，以视频流为例，如何从流中读取帧，为便于理解，在关键处注释清楚。
+
+```c
+    while (av_read_frame(fmt_ctx, pkt) >= 0) {
+        if(pkt->size){
+            /*
+            demux 解复用
+            原始流的数据中，不同格式的流会交错在一起（多路复用）
+            从原始流中读取的每一个 packet 的流可能是不一样的，需要判断 packet 的流索引，按类型处理
+            */
+            if(pkt->stream_index == video_stream_idx){
+                // 向解码器发送原始压缩数据 packet
+                if((ret = avcodec_send_packet(video_decodec_ctx, pkt)) < 0){
+                    av_log(NULL, AV_LOG_ERROR, "Error sending a packet for decoding, ret=%d", ret);
+                    break;
+                }
+                /*
+                解码输出视频帧
+                avcodec_receive_frame()返回 EAGAIN 表示需要更多帧来参与编码
+                像 MPEG等格式, P帧(预测帧)需要依赖I帧(关键帧)或者前面的P帧，使用比较或者差分方式编码
+                读取frame需要循环，因为读取多个packet后，可能获得多个frame
+                */ 
+                while(ret >= 0){
+                    ret = avcodec_receive_frame(video_decodec_ctx, frame);
+                    if(ret == AVERROR(EAGAIN) || ret == AVERROR_EOF){
+                        break;
+                    }
+
+                    /* 
+                    DEBUG 打印出视频的时间
+                    pts = display timestamp
+                    视频流有基准时间 time_base ，即每 1 pts 的时间间隔(单位秒)
+                    使用 pts * av_q2d(time_base) 可知当前帧的显示时间
+                    */
+                    if(video_decodec_ctx->frame_number%100 == 0){
+                        av_log(NULL, AV_LOG_INFO, "read video No.%d frame, pts=%d, timestamp=%f seconds", 
+                            video_decodec_ctx->frame_number, frame->pts, frame->pts * av_q2d(video_stream->time_base));
+                    }
+
+                    /*
+                    在第一个视频帧读取成功时，可以进行：
+                    １、若要转码，初始化相应的编码器
+                    ２、若要加过滤器，比如水印、旋转等，这里初始化 filter
+                    */
+                    if (video_decodec_ctx->frame_number == 1) {
+
+                    }else{
+
+                    }
+                    av_frame_unref(frame);
+                }
+            }else if(pkt->stream_index == audio_stream_idx){
+
+            }
+        }
+
+        av_packet_unref(pkt);
+        av_frame_unref(frame);
+    }
+```
+
+看到了这里，可以说入门 ffmpeg 编程了，什么，你问后面的转码怎么做？笔者就留白了，本文已经介绍了最基本的解码过程了，编码也就是逆向过程，我建议阅读 ffmepg 官方源码的example，以及多了解音视频各种格式的知识。
+
+
+#### 实际例子
+
+我提供两个小例子在 github 上
+
+- [转码GIF](https://github.com/lightfish-zhang/mpegUtil/blob/master/c_wrapper/gen_gif.c)
+- [生成缩略图](https://github.com/lightfish-zhang/mpegUtil/blob/master/c_wrapper/gen_thumbnail.c)
+
+
+请安装好 linux 下 ffmepg 环境，找到例子代码里的 Ｍakefile 文件编译，例如：
+
+```
+make -f Makefile_test_dump_info
+```
+
+以后我会将这两个小例子修改，实现跨语言调用，如 nodejs addon 或 golang cgo
 
 
 ## 参考文章
+
+[ffmpeg example](https://github.com/FFmpeg/FFmpeg/tree/master/doc/examples) (本文代码就是从example改过来的)
 
 [雷霄骅的博客](https://blog.csdn.net/leixiaohua1020) (致敬英才)
 
