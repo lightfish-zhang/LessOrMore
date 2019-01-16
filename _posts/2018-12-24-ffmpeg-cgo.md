@@ -13,7 +13,7 @@ tag: [codec]
 
 ## 前言
 
-继上一篇 [ffmpeg音视频C编程入门](http://lightfish.cn/2018/12/20/ffmpeg-primer/), 使用高性能的C语言进行音视频的处理，比较执行效率比较高，但是业务需求，快捷开发需要使用更方便的语言，比如 golang，本文介绍如何将 [将视频转成GIF](https://github.com/lightfish-zhang/mpegUtil/blob/master/c/gen_gif.c) 的C语言方法封装成 golang 方法以便调用。
+继上一篇 [ffmpeg音视频C编程入门](http://blog.lightfish.cn/2018/12/20/ffmpeg-primer/), 使用高性能的C语言进行音视频的处理，比较执行效率比较高，但是业务需求，快捷开发需要使用更方便的语言，比如 golang，本文介绍如何将 [将视频转成GIF](https://github.com/lightfish-zhang/mpegUtil/blob/master/c/gen_gif.c) 的C语言方法封装成 golang 方法以便调用。
 
 ## 认识cgo的封装技巧
 

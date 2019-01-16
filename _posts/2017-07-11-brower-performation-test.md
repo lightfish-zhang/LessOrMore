@@ -48,4 +48,4 @@ tag: [brower]
 
 [2]:https://www.webpagetest.org/
 
-[3]:http://lightfish.cn/2017/07/17/brower-render/
+[3]:http://blog.lightfish.cn/2017/07/17/brower-render/
