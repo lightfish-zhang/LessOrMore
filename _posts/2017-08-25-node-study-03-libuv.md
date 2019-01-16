@@ -1,6 +1,6 @@
 ---
 layout: post
-title: node学习笔记——node与libuv
+title: nodejs学习笔记——node与libuv
 date:   2017-08-23 20:30:00 +0800
 categories: javascirpt
 tag: [libuv]

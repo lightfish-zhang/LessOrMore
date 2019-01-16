@@ -1,6 +1,6 @@
 ---
 layout: post
-title: node学习笔记——javascript和C++的编程
+title: nodejs学习笔记——javascript和C++的编程
 date:   2017-08-23 20:30:00 +0800
 categories: javascirpt
 tag: [v8]
