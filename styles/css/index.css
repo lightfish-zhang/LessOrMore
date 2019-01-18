@@ -4806,6 +4806,10 @@ textarea.input-group-sm>.input-group-btn>.btn {
   color: #999999;
 }
 
+.breadcrumb a{
+  font-size: 16px;
+}
+
 .pagination {
   display: inline-block;
   padding-left: 0;
