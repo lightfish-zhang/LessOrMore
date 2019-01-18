@@ -28,13 +28,9 @@ markdown: kramdown
 FB:
   comments :
     provider : gitalk
-
-#    disqus :
-#        short_name : lightfish
-#    duoshuo:
-#        short_name : lightfish
-    # facebook :
-    #   appid : 123
-    #   num_posts: 5
-    #   width: 580
-    #   colorscheme: light
+    gitalk :
+      clientID : bb236e89026d525e858d
+      clientSecret : b62389d9234a8dcd4e444ff4b160d08765efbfb6
+      repo : LessOrMore
+      owner : lightfish-zhang
+      admin : lightfish-zhang

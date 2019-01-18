@@ -4,13 +4,13 @@
 
 <script type="text/javascript">
 const gitalk = new Gitalk({
-  clientID: 'bb236e89026d525e858d',
-  clientSecret: 'b62389d9234a8dcd4e444ff4b160d08765efbfb6',
-  repo: 'LessOrMore',
-  owner: 'lightfish-zhang',
-  admin: ['lightfish-zhang'],
+  clientID: '{{ site.FB.comments.gitalk.clientID }}',
+  clientSecret: '{{ site.FB.comments.gitalk.clientSecret }}',
+  repo: '{{ site.FB.comments.gitalk.repo }}',
+  owner: '{{ site.FB.comments.gitalk.owner }}',
+  admin: ['{{ site.FB.comments.gitalk.admin }}'],
   id: location.pathname,      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
+  distractionFreeMode: true  // Facebook-like distraction free mode
 })
 
 gitalk.render('gitalk-container')
